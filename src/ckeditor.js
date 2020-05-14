@@ -38,10 +38,40 @@ import GFMDataProcessor from '@ckeditor/ckeditor5-markdown-gfm/src/gfmdataproces
 function Markdown( editor ) {
 	editor.data.processor = new GFMDataProcessor( editor.editing.view.document );
 }
+// add test plugin
+import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+// This SVG file import will be handled by webpack's raw-text loader.
+// This means that imageIcon will hold the source SVG.
+import pencilIcon from '@ckeditor/ckeditor5-core/theme/icons/pencil.svg';
 
+import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
+
+class AdvancedEditor extends Plugin {
+	init() {
+		const editor = this.editor;
+
+		editor.ui.componentFactory.add( 'advancedEditor', locale => {
+			const view = new ButtonView( locale );
+
+			view.set( {
+				label: 'Advanced Editor',
+				icon: pencilIcon,
+				tooltip: true
+			} );
+
+			// Callback executed once the image is clicked.
+			view.on( 'execute', () => {
+				// console.log( 'test', this );
+			} );
+
+			return view;
+		} );
+	}
+}
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
 	Markdown,
+	AdvancedEditor,
 
 	Essentials,
 	UploadAdapter,
@@ -88,7 +118,8 @@ ClassicEditor.defaultConfig = {
 			'insertTable',
 			'mediaEmbed',
 			'undo',
-			'redo'
+			'redo',
+			'advancedEditor'
 		]
 	},
 	image: {
