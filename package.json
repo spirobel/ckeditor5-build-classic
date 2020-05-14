@@ -94,5 +94,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-markdown-gfm": "^19.0.0"
   }
 }

@@ -32,8 +32,17 @@ import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformatio
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
+import GFMDataProcessor from '@ckeditor/ckeditor5-markdown-gfm/src/gfmdataprocessor';
+
+// Simple plugin which loads the data processor.
+function Markdown( editor ) {
+	editor.data.processor = new GFMDataProcessor( editor.editing.view.document );
+}
+
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
+	Markdown,
+
 	Essentials,
 	UploadAdapter,
 	Autoformat,
