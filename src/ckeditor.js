@@ -61,7 +61,7 @@ class AdvancedEditor extends Plugin {
 
 			// Callback executed once the image is clicked.
 			view.on( 'execute', () => {
-				// console.log( 'test', this );
+				 console.log( 'test', this );
 			} );
 
 			return view;
