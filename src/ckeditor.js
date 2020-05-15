@@ -42,20 +42,21 @@ function Markdown( editor ) {
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 // This SVG file import will be handled by webpack's raw-text loader.
 // This means that imageIcon will hold the source SVG.
-import pencilIcon from '@ckeditor/ckeditor5-core/theme/icons/pencil.svg';
+//import pencilIcon from '@ckeditor/ckeditor5-core/theme/icons/pencil.svg';
 
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 
 class AdvancedEditor extends Plugin {
 	init() {
 		const editor = this.editor;
+		let icon = editor.config.get( 'name.icon' );
 
 		editor.ui.componentFactory.add( 'advancedEditor', locale => {
 			const view = new ButtonView( locale );
 
 			view.set( {
 				label: 'Advanced Editor',
-				icon: pencilIcon,
+				icon: icon,
 				tooltip: true
 			} );
 
