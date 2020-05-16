@@ -49,21 +49,19 @@ import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 class AdvancedEditor extends Plugin {
 	init() {
 		const editor = this.editor;
-		let icon = editor.config.get( 'name.icon' );
-
+		let toolbarItem = editor.config.get( 'toolbarItem' );
+    console.log(toolbarItem)
 		editor.ui.componentFactory.add( 'advancedEditor', locale => {
 			const view = new ButtonView( locale );
 
 			view.set( {
 				label: 'Advanced Editor',
-				icon: icon,
+				icon: toolbarItem.icon,
 				tooltip: true
 			} );
-
+      toolbarItem.onClick();
 			// Callback executed once the image is clicked.
-			view.on( 'execute', () => {
-				 console.log( 'test', this );
-			} );
+			view.on( 'execute', toolbarItem.onClick );
 
 			return view;
 		} );
