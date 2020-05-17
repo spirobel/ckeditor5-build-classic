@@ -58,7 +58,7 @@ class AdvancedEditor extends Plugin {
 					icon: item.icon,
 					tooltip: true
 				} );
-				view.on( 'execute', item.onClick );
+				view.on( 'execute', item.onClick.bind(editor) );
 
 				return view;
 			} );
