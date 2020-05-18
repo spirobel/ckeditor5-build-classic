@@ -77,12 +77,8 @@ ClassicEditor.builtinPlugins = [
 	Italic,
 	BlockQuote,
 	CKFinder,
-	EasyImage,
 	Heading,
 	Image,
-	ImageCaption,
-	ImageStyle,
-	ImageToolbar,
 	ImageUpload,
 	Indent,
 	Link,
@@ -113,18 +109,9 @@ ClassicEditor.defaultConfig = {
 			'imageUpload',
 			'blockQuote',
 			'insertTable',
-			'mediaEmbed',
 			'undo',
 			'redo',
 			'advancedEditor'
-		]
-	},
-	image: {
-		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
-			'|',
-			'imageTextAlternative'
 		]
 	},
 	table: {

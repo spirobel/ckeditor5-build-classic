@@ -32,7 +32,7 @@
     "@ckeditor/ckeditor5-ckfinder": "^19.0.0",
     "@ckeditor/ckeditor5-core": "^19.0.0",
     "@ckeditor/ckeditor5-dev-utils": "^13.0.0",
-    "@ckeditor/ckeditor5-dev-webpack-plugin": "^9.0.0",
+    "@ckeditor/ckeditor5-dev-webpack-plugin": "^9.0.2",
     "@ckeditor/ckeditor5-easy-image": "^19.0.0",
     "@ckeditor/ckeditor5-editor-classic": "^19.0.0",
     "@ckeditor/ckeditor5-essentials": "^19.0.0",
@@ -97,7 +97,7 @@
     }
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-markdown-gfm": "^19.0.0",
+    "@ckeditor/ckeditor5-markdown-gfm": "ckeditor/ckeditor5-markdown-gfm#github-rte",
     "@ckeditor/ckeditor5-ui": "^19.0.0"
   }
 }
