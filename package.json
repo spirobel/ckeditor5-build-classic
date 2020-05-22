@@ -98,6 +98,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-markdown-gfm": "ckeditor/ckeditor5-markdown-gfm#github-rte",
-    "@ckeditor/ckeditor5-ui": "^19.0.0"
+    "@ckeditor/ckeditor5-ui": "^19.0.0",
+    "@ckeditor/ckeditor5-upload": "^19.0.0"
   }
 }

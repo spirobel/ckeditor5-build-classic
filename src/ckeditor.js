@@ -1,7 +1,4 @@
-/**
- * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
- */
+
 
 // The editor creator to use.
 import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
@@ -65,25 +62,54 @@ class AdvancedEditor extends Plugin {
 		} );
 	}
 }
+import FileRepository from '@ckeditor/ckeditor5-upload/src/filerepository';
+class DisUploadAdapter {
+	constructor( loader ) {
+		// The file loader instance to use during the upload.
+		this.loader = loader;
+	}
+	// Starts the upload process.
+	upload() {
+		const disUploader = this.loader.editor.config.get( 'disUploader' );
+		return this.loader.file
+			.then( file => new Promise( ( resolve, reject ) => {
+				disUploader.upload( resolve, reject, file );
+			} ) );
+	}
+
+	// Aborts the upload process.
+	abort() {
+		const disUploader = this.loader.editor.config.get( 'disUploader' );
+		disUploader.abort( this );
+	}
+}
+
+function DiscourseUpload( editor ) {
+	editor.plugins.get( 'FileRepository' ).createUploadAdapter = loader => {
+		// Configure the URL to the upload script in your back-end here!
+		loader.editor = editor;
+
+		return new DisUploadAdapter( loader );
+	};
+}
+
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
 	Markdown,
 	AdvancedEditor,
-
+	FileRepository,
 	Essentials,
-	UploadAdapter,
+	DiscourseUpload,
 	Autoformat,
 	Bold,
 	Italic,
 	BlockQuote,
-	CKFinder,
 	Heading,
 	Image,
 	ImageUpload,
 	Indent,
 	Link,
 	List,
-	MediaEmbed,
 	Paragraph,
 	PasteFromOffice,
 	Table,
