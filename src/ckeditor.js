@@ -128,16 +128,13 @@ ClassicEditor.defaultConfig = {
 			'link',
 			'bulletedList',
 			'numberedList',
-			'|',
-			'indent',
-			'outdent',
+			'blockQuote',
 			'|',
 			'imageUpload',
-			'blockQuote',
 			'insertTable',
 			'undo',
 			'redo',
-			'advancedEditor'
+			'Advanced Editor'
 		]
 	},
 	table: {
