@@ -72,9 +72,9 @@ class DisUploadAdapter {
 	upload() {
 		const disUploader = this.loader.editor.config.get( 'disUploader' );
 		return this.loader.file
-			.then( file => new Promise( ( resolve, reject ) => {
-				disUploader.upload( resolve, reject, file, this );
-			} ) );
+			.then( file => {
+				return disUploader.upload( file, this );
+			} );
 	}
 
 	// Aborts the upload process.
