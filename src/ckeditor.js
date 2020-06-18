@@ -28,13 +28,22 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 
 export default class ClassicEditor extends ClassicEditorBase {}
-
+import HtmlDataProcessor from '@ckeditor/ckeditor5-engine/src/dataprocessor/htmldataprocessor';
 import GFMDataProcessor from '@ckeditor/ckeditor5-markdown-gfm/src/gfmdataprocessor';
 
-// Simple plugin which loads the data processor.
-function Markdown( editor ) {
-	editor.data.processor = new GFMDataProcessor( editor.editing.view.document );
+class Markdown extends Plugin {
+	init() {
+		const editor = this.editor;
+		const html = editor.config.get( 'html' );
+		if(html){
+			editor.data.processor = new HtmlDataProcessor( editor.editing.view.document );
+
+		}else{
+		editor.data.processor = new GFMDataProcessor( editor.editing.view.document );
+		}
+	}
 }
+
 // add test plugin
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 // This SVG file import will be handled by webpack's raw-text loader.
